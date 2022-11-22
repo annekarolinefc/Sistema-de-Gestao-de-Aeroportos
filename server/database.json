@@ -1,0 +1,34 @@
+{
+    "aeroportos": [
+      {
+        "id_aeroporto": 1,
+        "nome_aeroporto": "Goroka Airport",
+        "codigo_iata": "GKA",
+        "cidade": "Goroka",
+        "codigo_pais_iso": "Papua New Guinea",
+        "latitude": -6.081689834590001,
+        "longitude": 145.391998291,
+        "altitude": 5282
+      },
+      {
+        "id_aeroporto": 2,
+        "nome_aeroporto": "Goroka Airport",
+        "codigo_iata": "GKA",
+        "cidade": "Goroka",
+        "codigo_pais_iso": "Papua New Guinea",
+        "latitude": -6.081689834590001,
+        "longitude": 145.391998291,
+        "altitude": 5282
+      },
+      {
+        "id_aeroporto": 3,
+        "nome_aeroporto": "Goroka Airport",
+        "codigo_iata": "GKA",
+        "cidade": "Goroka",
+        "codigo_pais_iso": "Papua New Guinea",
+        "latitude": -6.081689834590001,
+        "longitude": 145.391998291,
+        "altitude": 5282
+      }
+    ]
+  }

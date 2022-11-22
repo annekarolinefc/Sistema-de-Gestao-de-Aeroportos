@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aeroportos</title>
+
+    <!--Estilo CSS-->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1 class="title">Aeroportos</h1>
+    </header>
+    <main>
+        <section class="cadastro">
+            <section class="container" style="display: block;">
+                <!--<h2>Cadastrar</h2>-->
+                <div class="container2" > <!--style="display: none;"-->
+                    <form action="" class="frmCadastro" id="frmCadastro">
+                        <div class="forminfo">
+                            <label for="nome">ID:</label>
+                            <input type="number" name="nome" id="id" placeholder="Insira o id do novo aeroporto" required>
+                        </div>
+                        <div class="forminfo">
+                            <label for="nome">Nome:</label>
+                            <input type="text" name="nome" id="nome" placeholder="Insira o nome do novo aeroporto" required>
+                        </div>
+                        <div class="forminfo">
+                            <label for="iata">Código IATA:</label>
+                            <input type="text" maxlength="3" name="iata" id="iata" placeholder="Insira o código iata" required>
+                        </div>
+                        <div class="forminfo">
+                            <label for="cidade">Cidade:</label>
+                            <input type="text" name="cidade" id="cidade" placeholder="Insira a cidade" required>
+                        </div>
+                        <div class="forminfo">
+                            <label for="iso">Iso:</label>
+                            <input type="text" maxlength="2" name="iso" id="iso" placeholder="Insira o código ISO" required>
+                        </div>
+                        <div class="forminfo">
+                            <label for="longitude">Longitude:</label>
+                            <input type="number" name="longitude" id="longitude"  placeholder="Insira a longitude" required>
+                        </div>
+                        <div class="forminfo">
+                            <label for="latitude">Latitude:</label>
+                            <input type="number" name="latitude" id="latitude" placeholder="Insira a latitude" required>
+                        </div>
+                        <div class="forminfo">
+                            <label for="altitude">Altitude:</label>
+                            <input type="number" name="altitude" id="altitude" placeholder="Insira a altitude" required>
+                        </div>
+                        <div class="forminfo">
+                            <input type="submit" class='btn-send' name="btn-send" id="btn-send" value="Cadastrar">
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </section>
+
+
+        <div class="wrapper">
+            <section>
+                <div class="search">
+                    <label for="site-search">Buscar aeroporto por IATA:</label>
+                    <input type="search" id="site-search" name="iata-search">
+                    <button id="buscarBtn">Buscar</button>
+                </div>
+                <header class="toolbar">
+                    <div>
+                        <h4><span id="total-aeroportos"></span> aeroportos cadastrados</h4>
+                    </div>
+                </header>
+                
+                <div id="tabela">
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!--SCRIPT JS-->
+    <script src="js/aeroporto.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
