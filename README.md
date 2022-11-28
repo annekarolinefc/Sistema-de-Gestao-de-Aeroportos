@@ -2,7 +2,7 @@
 
 ![image](https://img.shields.io/badge/license-MIT-blue)
 
-![Capa do Projeto](/images/imagem-front.jpg)
+![Capa do Projeto](/images/novo-front.jpg)
 
 # Sobre o Projeto
 
@@ -176,5 +176,4 @@ Este projeto está licenciado sob a Licença MIT,  consulte o arquivo [LICENSE.m
 	
 
 
-
-json-server --watch database.json
+**Trabalhando com o json-server:** json-server --watch database.json
