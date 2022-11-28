@@ -1,5 +1,6 @@
 /************************** URL DA API DE DADOS***************************/
-const url = 'http://localhost:3000/aeroportos/'
+//const url = 'https://api-flask-aeroporto.herokuapp.com/aeroporto/'
+const url = 'http://127.0.0.1:5000/aeroporto'
 
 // CRIA OS ELEMENTOS DA TABELA
 const table = document.createElement('table');
@@ -13,10 +14,10 @@ const totalRegistros = document.querySelector('#total-aeroportos');
 //CABEÇALHO DA TABELA
 const CABECALHO = ["ID Aeroporto", "Nome", "Codigo IATA",  "Cidade", "Codigo Pais ISO", "Latitude", "Longitude", "Altitude", "Ações"];
 
+//CRIACAO DE UM ARRAY
 let aeroportos = []
 
 //QUANDO A PAGINA É CARREGADA, CRIA-SE A TABELA, CRIA O CABEÇALHO E INCLUI OS DADOS
-
 window.addEventListener('load', function() {
     criarTabela();
     criarCabecalho(CABECALHO);
@@ -56,7 +57,7 @@ function criarCabecalho(dados) {
 function adicionarLinhas(dados) {
     for (let i = 0; i < dados.length; i++) {
         let linha = tbody.insertRow();
-        linha.setAttribute('id', 'aeroporto-' + dados[i].id)
+        linha.setAttribute('id', 'aeroporto-' + dados[i].id_aeroporto)
         aeroportos.push(dados[i])
 
         let registro = [
@@ -73,6 +74,7 @@ function adicionarLinhas(dados) {
         //CRIAÇÃO DE UM CAMPO PARA OS BOTÕES
         let celulaOpcoes = document.createElement('td');
         
+        /*
         //BOTÃO DE VISUALIZAR
         let botaoVer = document.createElement('button');
         botaoVer.setAttribute('type', 'button');
@@ -82,6 +84,8 @@ function adicionarLinhas(dados) {
             alert("FUNCAO DE VISUALIZAR O AEROPORTO")
         });
         celulaOpcoes.appendChild(botaoVer);
+        */
+
 
         //BOTÃO EDITAR
         let botaoEditar = document.createElement('button');
@@ -89,8 +93,11 @@ function adicionarLinhas(dados) {
         botaoEditar.value = dados[i].id_aeroporto;
         botaoEditar.textContent = "Editar";
         botaoEditar.addEventListener('click', function(){
-            alert("COLOCAR FUNÇÃO DE EDICAO AQUI")
-            console.log(id_aeroporto);
+            //alert("COLOCAR FUNÇÃO DE EDICAO AQUI")
+
+            if (confirm('Tem certeza que deseja editar esse Aeroporto?')) {
+                editarAeroporto(dados[i].id_aeroporto);
+            }
             // **************** COLOCAR FUNCAO DE EDICAO *****************
         });
         celulaOpcoes.appendChild(botaoEditar);
@@ -150,68 +157,62 @@ function adicionarLinhas(dados) {
         d.setAttribute('class', 'texto-alinhado-direita');
     });    
 }
-
-
-//FUNÇÃO PARA EXCLUIR PRODUTO
-function excluirAeroporto(id_aeroporto) {
-    let indice = aeroportos.findIndex(function(d) { return d.id_aeroporto == id_aeroporto; });
-    aeroportos.splice(indice, 1)
-    tbody.deleteRow(indice);
-}
-
 //FUNÇÃO PARA CARREGAR OS DADOS NA TABELA
 function carregarDados() {
-    fetch(url)
+    fetch(url) //, { method: 'GET', mode: 'no-cors', headers: {'Access-Control-Allow-Origin': '*'},}
         .then(function(resposta) { return resposta.json(); })
-        .then(function(dados) { 
-            
+        .then(function(dados) {  
             adicionarLinhas(dados);
             atualizarBarraDeFerramentas(dados)
-        
         }).catch(function(erro) {
             console.error("Não foi possível carregar os dados: " + erro.message);
         });
-
 }
 
 function atualizarBarraDeFerramentas(dados) {
     totalRegistros.textContent = dados.length
 }
 
-//FUNÇÃO QUE BUSCA AEROPORTO POR IATA
-buscaBtn = document.querySelector('#buscarBtn')
-var iata_aeroporto = document.getElementById('buscarBtn').value;
 
-buscaBtn.addEventListener('click', () => {
-    alert("INSIRA A FUNÇÃO DE BUSCA");
-})
-
-function buscaAeroportoPorIATA(iata){
-    if (iata == aeroporto.iata){
-        
-    }
+//FUNÇÃO PARA EXCLUIR 
+function excluirAeroporto(id_aeroporto) {
+    //pego o indice do aeroporto
+    let indice = aeroportos.findIndex(function(d) { return d.id_aeroporto == id_aeroporto; });
+    //removo
+    aeroportos.splice(indice, 1)
+    //deleto no tbody
+    tbody.deleteRow(indice);
 }
 
-cadastrarBtn = document.querySelector('cadastrarBtn');
-//cadastrarBtn.addEventListener('click', adicionaAeroporto);
-cadastrarBtn.addEventListener('click', () => {
-    alert('INSIRA A FUNÇÃO DE CADASTRO AQUI');
-});
-
 //FUNÇÃO PARA ADICIONAR NOVO AEROPORTO
-/*
-function adicionaAeroporto() {
-    alert('INSIRA A FUNÇÃO DE CADASTRO AQUI');
+var cadastrarBtn = document.getElementById('cadastrarBtn')
+cadastrarBtn.addEventListener("submit", (evento) => {
+    evento.preventDefault();
 
     //capturando dados do formulario
     var id_aeroporto = document.getElementById('id_aeroporto').value;
-    var nome_aeroporto = document.getElementById('nome_aeroporto').value
+    console.log(document.getElementById('id_aeroporto').value);
+
+    var nome_aeroporto = document.getElementById('nome_aeroporto').value;
+    console.log(document.getElementById('nome_aeroporto').value);
+
     var codigo_iata = document.getElementById('codigo_iata').value
+    console.log( document.getElementById('codigo_iata').value)
+
     var cidade = document.getElementById('cidade').value
+    console.log(document.getElementById('cidade').value
+    )
     var codigo_pais_iso = document.getElementById('codigo_pais_iso').value
+    console.log(document.getElementById('codigo_pais_iso').value)
+
     var longitude = document.getElementById('longitude').value
+    console.log(document.getElementById('longitude').value)
+
     var latitude = document.getElementById('latitude').value
+    console.log(document.getElementById('latitude').value)
+
     var altitude = document.getElementById('altitude').value
+    console.log(document.getElementById('altitude').value)
 
     //Criando o Json do aeroporto
     json_aeroporto = {
@@ -225,9 +226,58 @@ function adicionaAeroporto() {
         altitude: altitude
     }
 
-    alert(json_aeroporto)
+    console.log("JSON CRIADO: " + json_aeroporto)
+    aeroportos.push(json_aeroporto)
+    console.log("DADOS: " + aeroportos)
+    //const tr = document.createElement('tr');
+
+    /*
+    let aeroporto= capturaDadosForm()
+    
+    capturaDadosForm()
+  
+    tr.innerHTML = `
+        <td>${aeroporto.id_aeroporto}</td>
+        <td>${aeroporto.nome_aeroporto}</td>
+        <td>${aeroporto.codigo_iata}</td>
+        <td>${aeroporto.cidade}</td>
+        <td>${aeroporto.codigo_pais_iso}</td>
+        <td>${aeroporto.longitude}</td>
+        <td>${aeroporto.latitude}</td>
+        <td>${aeroporto.altitude}</td>
+        `;
+    tbody.appendChild(tr);
+    tbody.insertRow(tr)*/
+})
+
+
+function capturaDadosForm(){
+    var formData = {};
+    formData["id_aeroporto"] = document.getElementById('id_aeroporto').value;
+    console.log(formData["id_aeroporto"])
+    formData["nome_aeroporto"] = document.getElementById('nome_aeroporto').value
+    formData["codigo_iata"] = document.getElementById('codigo_iata').value
+    formData["cidade"] = document.getElementById('cidade').value
+    formData["codigo_pais_iso"] = document.getElementById('codigo_pais_iso').value
+    formData["longitude"] = document.getElementById('longitude').value
+    formData["latitude"] = document.getElementById('latitude').value
+    formData["altitude"] = document.getElementById('altitude').value
+    console.log("Dados formulário: " + formData)
+    return formData;
 }
-*/
+
+
+function resetaFormulario() {
+    document.getElementById('id_aeroporto').value= "";
+    document.getElementById('nome_aeroporto').value= "";
+    document.getElementById('codigo_iata').value= "";
+    document.getElementById('cidade').value= "";
+    document.getElementById('codigo_pais_iso').value= "";
+    document.getElementById('longitude').value= "";
+    document.getElementById('latitude').value= "";
+    document.getElementById('altitude').value= "";
+}
+
 
 function carregarAeroporto() {
     return {
@@ -242,3 +292,14 @@ function carregarAeroporto() {
     }
 
 }
+
+/*
+//FUNÇÃO QUE BUSCA AEROPORTO POR IATA
+var buscaBtn = document.querySelector('#buscarBtn')
+var iata_aeroporto = document.getElementById('buscarBtn').value;
+buscaBtn.addEventListener('click', () => {
+    alert("INSIRA A FUNÇÃO DE BUSCA");
+})
+
+//function buscaAeroportoPorIATA(iata){}
+*/
