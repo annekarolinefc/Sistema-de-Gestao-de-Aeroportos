@@ -79,6 +79,49 @@ Leia o arquivo [CONTRIBUTING.md](CONTRIBUTING.md) para saber detalhes sobre o no
     <tr>
     <td align="center">
 	  	<a href="https://github.com/annekarolinefc">
+			<sub><b>Anne K. F. Carmo</b></sub>
+		</a>
+		<br />
+		<a href="https://github.com/annekarolinefc" title="Code">💻</a>
+	</td>
+	<td align="center">
+	  	<a href="LINK-DO-GIT-AQUI">
+			<sub><b>Anderson Paulo</b></sub>
+		</a>
+		<br />
+		<a href="LINK-DO-GIT-AQUI" title="Code">💻</a>
+	</td>
+	<td align="center">
+	  	<a href="LINK-DO-GIT-AQUI">
+			<sub><b>Daniel Augusto</b></sub>
+		</a>
+		<br />
+		<a href="LINK-DO-GIT-AQUI" title="Code">💻</a>
+	</td>
+	<td align="center">
+	  	<a href="LINK-DO-GIT-AQUI">
+			<sub><b>Messias Reis</b></sub>
+		</a>
+		<br />
+		<a href="LINK-DO-GIT-AQUI" title="Code">💻</a>
+	</td>
+	<td align="center">
+	  	<a href="LINK-DO-GIT-AQUI">
+			<sub><b>Rafael Dias</b></sub>
+		</a>
+		<br />
+		<a href="LINK-DO-GIT-AQUI" title="Code">💻</a>
+	</td>
+    </tr>
+	</tbody>
+<table>
+
+<!--
+<table>
+  <tbody>
+    <tr>
+    <td align="center">
+	  	<a href="https://github.com/annekarolinefc">
 			<img src="images/ft_Anne.jpg" width="100px;" alt="Anne Karoline"/>
 			<br />
 			<sub><b>Anne K. F. Carmo</b></sub>
@@ -125,6 +168,7 @@ Leia o arquivo [CONTRIBUTING.md](CONTRIBUTING.md) para saber detalhes sobre o no
     </tr>
 	</tbody>
 <table>
+-->
 
 # Licença
 
